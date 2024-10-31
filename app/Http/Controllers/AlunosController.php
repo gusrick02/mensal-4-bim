@@ -15,7 +15,7 @@ class AlunosController extends Controller
 
     public function store(Request $request)
     {
-    
+        
 
         try {
             //code...
@@ -71,11 +71,12 @@ class AlunosController extends Controller
     }
     public function show($id)
     {
-        $aluno = aluno::findOrFail($id);
-
+        $aluno = Aluno::findOrFail($id);
+        $curso = Curso::findOrFail($aluno->curso_id);
 
         return response()->json([
             "aluno" => $aluno,
+            "curso" => $curso,
         ], 200);
     }
 
